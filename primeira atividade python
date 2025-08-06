@@ -1,0 +1,40 @@
+class Carro:
+    # O método __init__ constrói a classe
+    def __init__(self, cor, marca, modelo):
+        self.cor = cor 
+        self.marca = marca
+        self.modelo = modelo 
+        self.velocidade_atual = 0  # Inicializa velocidade_atual
+       
+    def acelerar(self, valor):
+        self.velocidade_atual += valor 
+        print(f"O carro acelerou para {self.velocidade_atual} km/h")
+
+    def frear(self, valor): 
+        if self.velocidade_atual - valor >= 0:
+            self.velocidade_atual -= valor
+        else:
+            self.velocidade_atual = 0 
+        print(f"O carro freou para {self.velocidade_atual} km/h.")
+
+    def status(self): 
+        print("---Status do Carro---")
+        print(f"Marca: {self.marca}")
+        print(f"Modelo: {self.modelo}")
+        print(f"Cor: {self.cor}")
+        print(f"Velocidade Atual: {self.velocidade_atual} km/h")
+        print("------------------------------")
+
+# Código de execução
+meu_carro = Carro("Preto", "Hyundai", "Creta")
+        
+meu_carro.status()
+
+meu_carro.acelerar(50)
+meu_carro.acelerar(30)
+
+meu_carro.status()
+
+meu_carro.frear(20)
+
+meu_carro.status()

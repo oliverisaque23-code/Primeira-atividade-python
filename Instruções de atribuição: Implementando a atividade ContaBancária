@@ -1,0 +1,72 @@
+class ContaBancaria:
+    def __init__(self, titular, saldo=0):
+        self.__titular = titular
+        self.__saldo = saldo
+        self.__historico = []
+        self.__historico.append(f"Conta criada para {titular} com saldo inicial de R${saldo:.2f}")
+
+    # Método para obter o nome do titular
+    def get_titular(self):
+        return self.__titular
+
+    # Método para obter o saldo atual
+    def get_saldo(self):
+        return self.__saldo
+
+    # Método para depósito
+    def depositar(self, valor):
+        if valor > 0:
+            self.__saldo += valor
+            self.__historico.append(f"Depósito de R${valor:.2f} | Saldo atual: R${self.__saldo:.2f}")
+            print(f"Depósito de R${valor:.2f} realizado! Novo saldo: R${self.__saldo:.2f}")
+        else:
+            print("O valor do depósito deve ser maior que zero.")
+
+    # Método para saque
+    def sacar(self, valor):
+        if valor <= 0:
+            print("O valor do saque deve ser maior que zero.")
+        elif valor > self.__saldo:
+            print("Saldo insuficiente para o saque.")
+        else:
+            self.__saldo -= valor
+            self.__historico.append(f"Saque de R${valor:.2f} | Saldo atual: R${self.__saldo:.2f}")
+            print(f"Saque de R${valor:.2f} realizado! Novo saldo: R${self.__saldo:.2f}")
+
+    # Método para transferência
+    def transferir(self, valor, conta_destino):
+        if valor <= 0:
+            print("O valor da transferência deve ser maior que zero.")
+        elif valor > self.__saldo:
+            print("Saldo insuficiente para a transferência.")
+        elif not isinstance(conta_destino, ContaBancaria):
+            print("Conta de destino inválida.")
+        else:
+            self.__saldo -= valor
+            conta_destino.__saldo += valor
+            self.__historico.append(f"Transferência de R${valor:.2f} para {conta_destino.get_titular()} | Saldo atual: R${self.__saldo:.2f}")
+            conta_destino.__historico.append(f"Recebimento de R${valor:.2f} de {self.get_titular()} | Saldo atual: R${conta_destino.get_saldo():.2f}")
+            print(f"Transferência de R${valor:.2f} para {conta_destino.get_titular()} realizada com sucesso.")
+
+    # Método para visualizar o extrato
+    def ver_extrato(self):
+        print(f"\nExtrato da conta de {self.__titular}:")
+        for transacao in self.__historico:
+            print(f"- {transacao}")
+
+
+# Criando contas
+conta1 = ContaBancaria("Nicolas", 1000)
+conta2 = ContaBancaria("Diogo", 500)
+
+# Operações
+conta1.depositar(300)
+conta1.sacar(200)
+conta1.transferir(400, conta2)
+
+# Visualizando extratos
+conta1.ver_extrato()
+conta2.ver_extrato()
+
+# Acessando dados via métodos
+print(f"\nTitular da conta 1: {conta1.get_titular()}")

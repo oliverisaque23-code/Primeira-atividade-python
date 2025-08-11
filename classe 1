@@ -1,0 +1,30 @@
+class Pessoa:
+    def __init__(self, nome, km):
+        self.nome = nome
+        self.km = km
+
+    def frente(self):
+        if self.km > 0:
+            print(f"O (a) {self.nome} andou: {self.km}km para frente")
+        else:
+            print(f"O (a) {self.nome} não andou!")
+
+    def tras(self, km):
+        if self.km > 0:
+            print(f"O (a) {self.nome} andou: {self.km}km para trás")
+        else:
+            print(f"O (a) {self.nome} não andou!")
+
+    def lado_direito(self, km):
+        if self.km > 0:
+            print(f"O (a) {self.nome} andou: {self.km}km para a direita")
+        else:
+            print(f"O (a) {self.nome} não andou!")
+    def lado_esquerdo(self, km):
+        if self.km > 0:
+            print(f"O (a) {self.nome} andou: {self.km}km para a esquerda")
+        else:
+            print(f"O (a) {self.nome} não andou!")
+
+caylon = Pessoa("Caylon", 5)
+caylon.frente()

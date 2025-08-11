@@ -1,0 +1,176 @@
+"""Class Carro"""
+class Carro:
+    """Proriedade do carro; cor,marca,modelo"""
+    # O método __init__ constrói a classe
+    def __init__(self, cor, marca, modelo):
+        self.cor = cor 
+        self.marca = marca
+        self.modelo = modelo 
+        self.velocidade_atual = 0  # Inicializa velocidade_atual    
+        """Proriedade para acelerar o carro"""
+    def acelerar(self, valor):
+        #velocidade atual += valor de aceleragem do Carro
+        self.velocidade_atual += valor 
+        print(f"O carro acelerou para {self.velocidade_atual} km/h")
+        
+        """Proriedade para frear Carro"""
+    def frear(self, valor): 
+        #vai ser usado para subtrair o valor da velocidade com o valor de quanto o carro freou
+        if self.velocidade_atual - valor >= 0:
+            self.velocidade_atual -= valor
+        else:
+            self.velocidade_atual = 0 
+        print(f"O carro freou para {self.velocidade_atual} km/h.")
+        
+        """Proriedade para imprir as informações do carro"""
+
+    def status(self): 
+        print("---Status do Carro---")
+        #exibe a marca e as informações do carro de uma por uma 
+        print(f"Marca: {self.marca}")
+        print(f"Modelo: {self.modelo}")
+        print(f"Cor: {self.cor}")
+        print(f"Velocidade Atual: {self.velocidade_atual} km/h")
+        print("------------------------------")
+        
+        """Testando e exibindo as informações do carro"""
+
+# Código de execução
+meu_carro = Carro("Preto", "Hyundai", "Creta")
+ #mostra e puxa o status de como o carro está ou seja, se ele esta freando ou acelarando e a velocidade atual       
+meu_carro.status() 
+
+meu_carro.acelerar(50)
+meu_carro.acelerar(30)
+
+meu_carro.status()
+
+meu_carro.frear(20)
+
+meu_carro.status()
+
+
+          
+
+"""Classe conta Bancária"""
+class ContaBancaria:
+    """Propriedades do titular da conta e o saldo dele"""
+    def __init__(self, titular, saldo=0):
+        self.__titular = titular
+        self.__saldo = saldo
+    
+    """Fala o valor de deposito que será feito e inserido na Conta"""
+
+    def depositar(self, valor):
+        if valor > 0:
+            self.__saldo += valor
+            print(f"Deposito de R${valor} realizado! Novo Saldo: R${self.__saldo}")
+
+    """Diz o valor refente ao saque e quanto será retirado da conta"""
+    def sacar(self, valor):
+        if 0 < valor <= self.__saldo:
+            self.__saldo -= valor
+            print(f"Saque de R${valor} realizado! Novo Saldo: R${self.__saldo}, Saldo atual da conto {self.__titular}: R${self.__saldo}")
+
+    """Exibe o saldo da conta para quem está vendo e lendo"""
+    def get_saldo(self):
+        print(f"Seu saldo é: R${self.__saldo}")
+        
+    """Exibição"""
+caylon = ContaBancaria("Caylon", 1000)  #Exibição do Saldo atual da conta
+
+caylon.depositar(500)  #Trabalha e realiza a função de deposito da conta 
+
+caylon.sacar(200)  #Trabalha e realiza a função de saque da conta
+
+
+
+
+
+    """Class  implementação Conta bancaria""" 
+class ContaBancaria:
+    """Propriedades do titular da conta e o saldo que ele tem"""
+    def __init__(self, titular, saldo=0):
+        self.__titular = titular
+        self.__saldo = saldo
+        self.__historico = []
+        self.__historico.append(f"Conta criada para {titular} com saldo inicial de R${saldo:.2f}")
+
+    # Método para obter o nome do titular
+    """Mostra o titular da conta"""
+    def get_titular(self):
+        return self.__titular
+
+    # Método para obter o saldo atual
+    """""Mostra o saldo da conta"""
+    def get_saldo(self):
+        return self.__saldo
+
+    # Método para depósito
+    """""Função de deposito"""
+    def depositar(self, valor):
+        if valor > 0:
+            self.__saldo += valor
+            self.__historico.append(f"Depósito de R${valor:.2f} | Saldo atual: R${self.__saldo:.2f}")
+            print(f"Depósito de R${valor:.2f} realizado! Novo saldo: R${self.__saldo:.2f}")
+        else:
+            print("O valor do depósito deve ser maior que zero.")
+
+    # Método para saque
+    """Função de sacar o dinheiro da conta"""
+    def sacar(self, valor):
+        if valor <= 0:
+            print("O valor do saque deve ser maior que zero.")
+        elif valor > self.__saldo:
+            print("Saldo insuficiente para o saque.")
+        else:
+            self.__saldo -= valor
+            self.__historico.append(f"Saque de R${valor:.2f} | Saldo atual: R${self.__saldo:.2f}")
+            print(f"Saque de R${valor:.2f} realizado! Novo saldo: R${self.__saldo:.2f}")
+
+    # Método para transferência
+    """Método para transferir dinheiro para outra conta"""
+    def transferir(self, valor, conta_destino):
+        if valor <= 0:
+            print("O valor da transferência deve ser maior que zero.")
+        elif valor > self.__saldo:
+            print("Saldo insuficiente para a transferência.")
+        elif not isinstance(conta_destino, ContaBancaria):
+            print("Conta de destino inválida.")
+        else:
+            self.__saldo -= valor
+            conta_destino.__saldo += valor
+            self.__historico.append(f"Transferência de R${valor:.2f} para {conta_destino.get_titular()} | Saldo atual: R${self.__saldo:.2f}")
+            conta_destino.__historico.append(f"Recebimento de R${valor:.2f} de {self.get_titular()} | Saldo atual: R${conta_destino.get_saldo():.2f}")
+            print(f"Transferência de R${valor:.2f} para {conta_destino.get_titular()} realizada com sucesso.")
+
+    # Método para visualizar o extrato
+    """Função para ver o extrato da conta"""
+    def ver_extrato(self):
+        print(f"\nExtrato da conta de {self.__titular}:")
+        for transacao in self.__historico:
+            print(f"- {transacao}")
+
+
+# Criando contas
+"""Crição de conta"""
+conta1 = ContaBancaria("Nicolas", 1000)
+conta2 = ContaBancaria("Diogo", 500)
+
+# Operações
+"""Operações que a conta faz"""
+conta1.depositar(300)
+conta1.sacar(200)
+conta1.transferir(400, conta2)
+
+# Visualizando extratos
+"""Visualizaões do extrato"""
+conta1.ver_extrato()
+conta2.ver_extrato()
+
+# Acessando dados via métodos
+"""Donos das contas"""
+print(f"\nTitular da conta 1: {conta1.get_titular()}")
+
+
+          

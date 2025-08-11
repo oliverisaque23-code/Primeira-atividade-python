@@ -1,0 +1,37 @@
+class Livros:
+    def __init__ (self, titulo, autor, editora): 
+        self.titulo = titulo 
+        self.autor = autor
+        self.editora = editora
+
+    def display_details(self) :
+            print(f" o livro: {self.titulo}, do autor(a): {self.autor}, da editora: {self.editora}.")
+
+class Revista:    
+     def __init__ (self, titulo, autor, editora): 
+        self.titulo = titulo 
+        self.autor = autor
+        self.editora = editora
+
+     def display_details(self) :
+            print(f" a revista: {self.titulo}, do autor(a): {self.autor}, da editora: {self.editora}.")
+
+class Jornal:    
+     def __init__ (self, titulo, autor, editora): 
+        self.titulo = titulo 
+        self.autor = autor
+        self.editora = editora
+
+     def display_details(self) :
+            print(f" o jornal: {self.titulo}, do autor(a): {self.autor}, da editora: {self.editora}.")
+            
+
+livro = Livros("Diario de um banana", "Oliver", "new york stades")
+livro.display_details()
+ 
+revista = Revista ("Ronaldinho e os parceiros", "Oliver","Brasil escrituras")
+revista.display_details()
+
+jornal = Jornal ("metropole", "globo","Kátia")
+jornal.display_details()
+ 

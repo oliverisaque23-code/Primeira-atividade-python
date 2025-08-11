@@ -1,0 +1,12 @@
+class CurtirOuCompartilhar:
+    def __init__(self, titulo):
+        self.titulo = titulo
+
+    def curtir(self):
+        print(f"O usuário curtiu o vídeo: {self.titulo}.")
+
+    def compartilhar(self):
+        print(f"O usuário compartilhou o vídeo: {self.titulo}.")
+
+caylon = CurtirOuCompartilhar("Três gatos brincando")
+caylon.compartilhar()

@@ -1,37 +1,47 @@
-class Livros:
-    def __init__ (self, titulo, autor, editora): 
-        self.titulo = titulo 
+class publicacao:
+   def __init__(self, titulo):
+        self.titulo = titulo
+        self.__esta_disponivel = True
+
+   def exibir_detalhes(self):
+        disponibilidade = "Disponível" if self.__esta_disponivel else "Insdiponivel"
+        return f"Título: {self.titulo} | Status: {disponibilidade}"
+
+   def emprestar(self):
+        if self.__esta_disponivel:
+            self.__esta_disponivel = False
+            return f"'{self.titulo}' foi emprestado."
+        return f"'{self.titulo}' já está emprestado."
+
+
+class Livro(publicacao):
+    def __init__(self, titulo, autor, ano):
+        super().__init__(titulo)
         self.autor = autor
+        self.ano = ano
+
+    def exibir_detalhes(self):
+        detalhes_pai = super().exibir_detalhes()
+        return f"{detalhes_pai} | Autor: {self.autor} | Ano: {self.ano}"
+
+
+class Revista(publicacao):
+    def __init__(self, titulo, editora, numero_edicao):
+        super().__init__(titulo)
         self.editora = editora
+        self.numero_edicao = numero_edicao
 
-    def display_details(self) :
-            print(f" o livro: {self.titulo}, do autor(a): {self.autor}, da editora: {self.editora}.")
+    def exibir_detalhes(self):
+        detalhes_pai = super().exibir_detalhes()
+        return f"{detalhes_pai} | Editora: {self.editora} | Edição: {self.numero_edicao}"
 
-class Revista:    
-     def __init__ (self, titulo, autor, editora): 
-        self.titulo = titulo 
-        self.autor = autor
-        self.editora = editora
 
-     def display_details(self) :
-            print(f" a revista: {self.titulo}, do autor(a): {self.autor}, da editora: {self.editora}.")
+livro1 = Livro("Clean code", "Robert C. Martin", 2008)
+revista1 = Revista("Wired", "Condo Nato", 450)
 
-class Jornal:    
-     def __init__ (self, titulo, autor, editora): 
-        self.titulo = titulo 
-        self.autor = autor
-        self.editora = editora
+print(livro1.exibir_detalhes())
+print(revista1.exibir_detalhes())
 
-     def display_details(self) :
-            print(f" o jornal: {self.titulo}, do autor(a): {self.autor}, da editora: {self.editora}.")
-            
+print(livro1.emprestar())
+print(livro1.exibir_detalhes())
 
-livro = Livros("Diario de um banana", "Oliver", "new york stades")
-livro.display_details()
- 
-revista = Revista ("Ronaldinho e os parceiros", "Oliver","Brasil escrituras")
-revista.display_details()
-
-jornal = Jornal ("metropole", "globo","Kátia")
-jornal.display_details()
- 

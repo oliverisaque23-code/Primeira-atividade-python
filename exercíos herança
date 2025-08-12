@@ -1,0 +1,136 @@
+class Funcionario:
+    def __init__(self, nome: str, salario: float):
+        self.nome = nome
+        self.salario = salario
+
+
+class Gerente(Funcionario):
+    def calcular_bonus(self) -> float:
+        return self.salario * 0.20
+
+
+class Desenvolvedor(Funcionario):
+    def calcular_bonus(self) -> float:
+        return self.salario * 0.10
+
+
+# Teste
+
+gerente = Gerente("Oliver", 8000.0)
+desenvolvedor = Desenvolvedor("Nick", 6000.0)
+
+print(f"Bônus do gerente {gerente.nome}: R$ {gerente.calcular_bonus():.2f}")
+print(f"Bônus do desenvolvedor {desenvolvedor.nome}: R$ {desenvolvedor.calcular_bonus():.2f}")
+
+
+
+class veiculo: 
+    def __init__(self, make, model,):
+        self.make = make
+        self.model = model
+     
+class carro(veiculo):
+    def __init__(self, make, model, portas):
+        super().__init__(make, model,)
+        self.portas = portas
+    
+    def exibir_detalhes(self):
+        print(f"Carro: {self.make}, Modelo:{self.model}, Portas: {self.portas} Portas")
+    
+class motocicleta(veiculo):
+    def __init__(self, make, model, deslocamento):
+        super().__init__(make, model,)
+        self.deslocamento = deslocamento
+             
+    def exibir_detalhes(self):
+        print(f"Motocicleta: {self.make}, Modelo:{self.model}, Deslocamento: {self.deslocamento}km/s")
+        
+
+
+x1 = motocicleta ("Honda", "CB500", 220)
+uno = carro ("Fiat", "Uno", 4)
+x1.exibir_detalhes()
+uno.exibir_detalhes()        
+
+
+
+
+class Produto:
+    def __init__(self, name: str, price: float, em_estoque: int):
+        self.name = name
+        self.price = price
+        self.__em_estoque = em_estoque  # atributo privado
+    def verificar_estoque(self):
+        return self.__em_estoque
+
+    def vender(self):
+        if self.__em_estoque > 0:
+            self.__em_estoque -= 1
+            print(f"{self.name} vendido com sucesso!")
+        else:
+            print(f"{self.name} está fora de estoque!")
+
+    def aplicar_desconto(self, percentual: float):
+        if percentual > 0 and percentual <= 100:
+            desconto = self.price * (percentual / 100)
+            self.price -= desconto
+            print(f"Desconto de {percentual}% aplicado. Novo preço: R${self.price:.2f}")
+        else:
+            print("Percentual de desconto inválido.")
+
+
+class Eletronico(Produto):
+    def __init__(self, name: str, price: float, em_estoque: int, garantia_meses: int):
+        super().__init__(name, price, em_estoque)
+        self.garantia_meses = garantia_meses
+
+
+class Comida(Produto):
+    def __init__(self, name: str, price: float, em_estoque: int, validade: str):
+        super().__init__(name, price, em_estoque)
+        self.validade = validade
+
+
+if __name__ == "__main__":
+    # Criando instâncias
+    celular = Eletronico("Smartphone", 2500.00, 5, 12)
+    pizza = Comida("Pizza de Calabresa", 35.00, 10, "2025-09-10")
+
+    # Testando métodos
+    print(f"Estoque de {celular.name}: {celular.verificar_estoque()}")
+    celular.vender()
+    celular.aplicar_desconto(10)
+
+    print(f"Estoque de {pizza.name}: {pizza.verificar_estoque()}")
+    pizza.vender()
+    pizza.aplicar_desconto(20)
+
+
+
+    class animal:
+    def __init__(self, name, sound):
+        self.name = name
+        self.sound = sound
+
+class cachorro (animal):
+    def __init__(self, name):
+        super().__init__(name, "Au Au")
+        
+    def fazer_som(self):
+        print(f"{self.name} faz {self.sound}")
+        
+class gato (animal):
+    def __init__(self, name):
+        super().__init__(name, "Miau")
+    def fazer_som(self):
+        print(f"{self.name} faz {self.sound}")
+        
+cachorro1 = cachorro("spike")
+gato1 = gato("lete")
+
+cachorro1.fazer_som()
+gato1.fazer_som()
+# Output:
+# Rex faz Au Au
+# Mia faz Miau
+

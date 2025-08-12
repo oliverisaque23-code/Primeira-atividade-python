@@ -173,4 +173,179 @@ conta2.ver_extrato()
 print(f"\nTitular da conta 1: {conta1.get_titular()}")
 
 
+
+"""Classe que cria uma pesssoa e que leva como atributos o nome e os km andados"""
+class Pessoa:
+    def __init__(self, nome, km):
+        self.nome = nome
+        self.km = km
+    """Propriedade para andar para frente"""
+    def frente(self):
+        # Só funciona se os km andados forem maior que 0
+        if self.km > 0:
+            print(f"O (a) {self.nome} andou: {self.km}km para frente")
+        else:
+            print(f"O (a) {self.nome} não andou!")
+
+    """Propriedade para andar para tras"""
+    def tras(self, km):
+        # Só funciona se os km andados forem maior que 0
+        if self.km > 0:
+            print(f"O (a) {self.nome} andou: {self.km}km para trás")
+        else:
+            print(f"O (a) {self.nome} não andou!")
+
+    """Propriedade para andar para a direita"""
+    def lado_direito(self, km):
+        # Só funciona se os km andados forem maior que 0
+        if self.km > 0:
+            print(f"O (a) {self.nome} andou: {self.km}km para a direita")
+        else:
+            print(f"O (a) {self.nome} não andou!")
+
+    """Propriedade para andar para a esquerda"""
+    def lado_esquerdo(self, km):
+        # Só funciona se os km andados forem maior que 0
+        if self.km > 0:
+            print(f"O (a) {self.nome} andou: {self.km}km para a esquerda")
+        else:
+            print(f"O (a) {self.nome} não andou!")
+
+"""Exibir o resultado do código"""
+caylon = Pessoa("Caylon", 5)
+caylon.frente()
+
+
+
+
+
+
+"""Classe de Compartilhar ou Curtir como atributo o nome do titulo"""
+class CurtirOuCompartilhar:
+    def __init__(self, titulo):
+        self.titulo = titulo  #Titulo do item a ser compartilhado ou curtido
+
+    """Metodo para Curtir"""
+    def curtir(self):
+        print(f"O usuário curtiu o vídeo: {self.titulo}.")
+
+    """Método para Compartilhar"""
+    def compartilhar(self):
+        print(f"O usuário compartilhou o vídeo: {self.titulo}.")
+
+"""Exibir Resultado"""
+caylon = CurtirOuCompartilhar("Três gatos brincando")
+caylon.compartilhar()
+
+
+
+
+
+"""Classe livro que recebe os atributos titulo e autor"""
+class Livro:
+    def __init__(self, titulo, autor):
+        self.titulo = titulo
+        self.autor = autor
+
+    # Método para ler
+    def ler(self):
+        print(f"Lendo o livro '{self.titulo}' de {self.autor}.")
+
+"""Exibir resultados"""
+kaio = Livro("Senhor dos Anéis", "Desconhecido")
+kaio.ler()
+
+
+
+
+"""Classe Computador com atributos marca, ligado/desligado"""
+class Computador:
+    def __init__(self, marca):
+        self.marca = marca
+        self.ligado = False
+
+    """Método ligar computador"""
+    def ligar(self):
+        self.ligado = True
+        print(f"O computador {self.marca} está ligado.")
+
+    """Método desligar computador"""
+    def desligar(self):
+        self.ligado = False
+        print(f"O computador {self.marca} está desligado.")
+
+
+"""Exibir Resultado"""
+fe16 = Computador("FE16")
+fe16.ligar()
+fe16.desligar()
+
+
+"""Classe onibus com atributos marca, capacidade e andando/parado"""
+class Onibus:
+    def __init__(self, marca, capacidade):
+        self.marca = marca
+        self.capacidade = capacidade
+        self.andando = False
+
+    """Método para o onibus ir para andar"""
+    def andar(self):
+        # Andar inicialmente é igual a False, Mudamos para True
+        andando = True
+        print(f"O ônibus {self.marca}, está andando com {self.capacidade} passageiros.")
+
+    """Método para o onibus parar"""
+    def parar(self):
+        # Mudar andar para False, caso esteja em True
+        andando = False
+        print(f"O ônibus {self.marca}, parou e está com {self.capacidade} passageiros.")
+
+"""Exibir resultado"""
+wolks = Onibus("Wolksvagen", 26)
+wolks.andar()
+wolks.parar()
+
+
+
+"""Classe Jogo para jogod diversos"""
+class Jogo:
+    # Nome e Genero dos jogos 
+    def __init__(self, nome, genero):
+        self.nome = nome
+        self.genero = genero
+
+    """Método para iniciar o jogo"""
+    def iniciar(self):
+        print(f"Iniciando o jogo '{self.nome}' do gênero {self.genero}.")
+
+    """Método desligar o jogo"""
+    def desligar(self):
+        print(f"Desligando o jogo '{self.nome}' do gênero {self.genero}.")
+
+
+"""Exibir resultado"""
+fifa = Jogo("Fifa", "Futebol/Esportes")
+fifa.iniciar()
+fifa.desligar()
+
+
+
+
+"""Classe bicicleta"""
+class Bicicleta:
+    """Método que define a cor e o tipo da bicicleta"""
+    def __init__(self, cor, tipo):
+        self.cor = cor
+        self.tipo = tipo
+
+    """Método para pedalar"""
+    def pedalar(self):
+        print(f"Pedalando a bicicleta {self.tipo} de cor {self.cor}.")
+
+"""Exibir resultados"""
+bike = Bicicleta("branca", "porte grande")
+bike.pedalar()
+
+
+
           
